@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.shop.domain.Shop;
 import com.shop.utilities.InvalidParamException;
+import com.shop.utilities.NotFoundException;
 
 @Repository
 public class ShopRepository {
@@ -42,13 +43,13 @@ public class ShopRepository {
 		//return repository;	
 	}
 	
-	public Shop getShopById(int shopId) throws Exception {
+	public Shop getShopById(int shopId) throws NotFoundException {
 		for (Shop shop : repository) {
 			if(shop.getShopId().equals(shopId)) {
 				return shop;
 			}
 		}
-		throw new Exception();
+		throw new NotFoundException();
 	}
 	
 	

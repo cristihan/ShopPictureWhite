@@ -13,23 +13,20 @@ import com.shop.utilities.InvalidParamException;
 public class PictureRepository {
 
 	private static List<Picture> repository = new ArrayList<>();
-	
+
 	public void addShop(Picture picture) throws InvalidParamException {
 		if (picture == null)
 			throw new InvalidParamException();
-		try {
-			repository.add(picture);
-		} catch (Exception e) {
-			throw new InvalidParamException();
-		}
+		repository.add(picture);
+
 	}
-	
+
 	public void burnPictures(int PictureId) {
 		for (Picture picture : repository) {
-			if(picture.getPictureId().equals(PictureId)) {
+			if (picture.getPictureId().equals(PictureId)) {
 				repository.remove(PictureId);
 			}
-			
+
 		}
 	}
 

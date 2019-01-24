@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import com.google.gson.annotations.Expose;
 import com.shop.domain.Picture;
+import com.shop.utilities.InvalidParamException;
 
 public class PictureDTO {
 	
@@ -22,7 +23,10 @@ public class PictureDTO {
 		
 	}
 	
-	public PictureDTO(Picture picture)  {		
+	public PictureDTO(Picture picture) throws InvalidParamException  {
+		if(picture == null) 
+			throw new InvalidParamException();
+		
 		this.pictureId = picture.getPictureId();
 		this.nameAuthor = picture.getNameAuthor();
 		this.namePicture = picture.getNamePicture();

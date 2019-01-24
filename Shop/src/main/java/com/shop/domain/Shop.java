@@ -55,11 +55,11 @@ public class Shop {
 		return maxCapacity;
 	}
 	
-	public void addPicture(Picture picture) throws Exception {
+	public void addPicture(Picture picture) throws InvalidParamException {
 		if(picture == null) 
-			throw new Exception(); 
+			throw new InvalidParamException(); 
 		if(this.maxCapacity == this.allPictures.size())
-			throw new Exception(); 
+			throw new InvalidParamException();
 			this.allPictures.add(picture);		
 		
 	}

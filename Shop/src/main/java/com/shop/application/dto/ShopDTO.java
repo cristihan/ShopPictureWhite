@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.shop.domain.Picture;
 import com.shop.domain.Shop;
-
+import com.shop.utilities.InvalidParamException;
 import com.shop.utilities.NotFoundException;
 
 public class ShopDTO {
@@ -25,7 +25,7 @@ public class ShopDTO {
 		
 	}
 	
-	public ShopDTO(Shop shop) throws NotFoundException  {
+	public ShopDTO(Shop shop) throws NotFoundException, InvalidParamException  {
 		if(shop == null)
 			throw new NotFoundException();
 		
@@ -35,7 +35,7 @@ public class ShopDTO {
 		this.allPictures = convertToDTO(shop.getAllPictures());		
 	}
 	
-	private List<PictureDTO> convertToDTO(List<Picture> allPictures){
+	private List<PictureDTO> convertToDTO(List<Picture> allPictures) throws InvalidParamException{
 		List<PictureDTO> result = new ArrayList<>();
 		for (Picture p : allPictures) {
 			result.add(new PictureDTO(p));

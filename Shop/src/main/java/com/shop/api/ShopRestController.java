@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.shop.application.ShopController;
 import com.shop.application.dto.ShopDTO;
+import com.shop.utilities.InvalidParamException;
 import com.shop.utilities.NotFoundException;
 
 @RestController
@@ -44,7 +45,7 @@ public class ShopRestController {
 	 * capacitat
 	 */
 	@GetMapping(value = "/shops", produces = "application/json;charset=UTF-8")
-	public String listShops() throws NotFoundException {
+	public String listShops() throws NotFoundException, InvalidParamException {
 		List<ShopDTO> shops = controller.listShops();
 		return toJson(shops);
 

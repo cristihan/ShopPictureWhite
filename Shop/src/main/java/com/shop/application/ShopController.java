@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import com.shop.application.dto.ShopDTO;
 import com.shop.domain.Shop;
 import com.shop.persistence.ShopRepository;
+import com.shop.utilities.InvalidParamException;
 import com.shop.utilities.NotFoundException;
 
 @Controller
@@ -29,7 +30,7 @@ public class ShopController {
 	 * GET /shops/ Llistar botigues: retorna la llista de botigues amb el seu nom i
 	 * la capacitat
 	 */
-	public List<ShopDTO> listShops() throws NotFoundException {
+	public List<ShopDTO> listShops() throws NotFoundException, InvalidParamException {
 		List<ShopDTO> userDTOList = new ArrayList<>();
 		List<Shop> shopList = shopRepository.getAllShops();
 		// verifico si la lista esta vacia y lanzo una excepcion
